@@ -1,5 +1,7 @@
 # ai-term
 
+![Example](./image.png)
+
 A lightweight terminal tool to query **Google AI Studio** straight from shell.  
 No subscriptions needed — just grab a free API key from [Google AI Studio](https://aistudio.google.com/api-keys).  
 
