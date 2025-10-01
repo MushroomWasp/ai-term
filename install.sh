@@ -38,9 +38,9 @@ sudo cp "/tmp/$SCRIPT_NAME" "$INSTALL_DIR/$BIN_NAME"
 
 echo
 echo "[+] Installed $TOOL_NAME to $INSTALL_DIR/$BIN_NAME"
+echo "[!] Make sure to set your API KEY in $INSTALL_DIR/$BIN_NAME"
 echo
 echo "Usage:"
 echo "  $BIN_NAME \"your prompt here\""
 echo "  $BIN_NAME -c \"your prompt here\"   # code-only mode"
-echo "[!] Make sure to set your API KEY in $INSTALL_DIR/$BIN_NAME"
 
