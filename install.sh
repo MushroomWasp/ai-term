@@ -28,11 +28,13 @@ if ! command -v glow &> /dev/null; then
   echo "    (Your output will still work, but glow makes it prettier.)"
 fi
 
-# Ask for API key
-echo
-echo "[*] You need a Google AI Studio API key to use this tool."
-echo "    Get one here: https://aistudio.google.com/app/apikey"
-read -p "Enter your API key: " API_KEY
+# Ask for API key if not provided
+if [ -z "$API_KEY" ]; then
+  echo
+  echo "[*] You need a Google AI Studio API key to use this tool."
+  echo "    Get one here: https://aistudio.google.com/app/apikey"
+  read -p "Enter your API key: " API_KEY
+fi
 
 if [ -z "$API_KEY" ]; then
   echo "[!] No API key provided. Installation aborted."
