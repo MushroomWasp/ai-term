@@ -28,14 +28,29 @@ if ! command -v glow &> /dev/null; then
   echo "    (Your output will still work, but glow makes it prettier.)"
 fi
 
+# Ask for API key
+echo
+echo "[*] You need a Google AI Studio API key to use this tool."
+echo "    Get one here: https://aistudio.google.com/app/apikey"
+read -p "Enter your API key: " API_KEY
+
+if [ -z "$API_KEY" ]; then
+  echo "[!] No API key provided. Installation aborted."
+  exit 1
+fi
+
 # Download the script from GitHub
 echo "[*] Fetching latest script from GitHub..."
 curl -sL "$SCRIPT_URL" -o "/tmp/$SCRIPT_NAME"
+
+# Inject API key into script
+sed -i "s|API_KEY=\"XXXX\"|API_KEY=\"$API_KEY\"|" "/tmp/$SCRIPT_NAME"
 
 # Copy to /usr/local/bin
 chmod +x "/tmp/$SCRIPT_NAME"
 sudo cp "/tmp/$SCRIPT_NAME" "$INSTALL_DIR/$BIN_NAME"
 
+echo
 echo "[+] Installed $TOOL_NAME to $INSTALL_DIR/$BIN_NAME"
 echo
 echo "Usage:"
