@@ -8,6 +8,7 @@ BIN_NAME="ai"
 TOOL_NAME="ai-term"
 INSTALL_DIR="/usr/local/bin"
 SCRIPT_NAME="script.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/MushroomWasp/ai-term/refs/heads/main/script.sh"
 
 echo "[*] Installing $TOOL_NAME..."
 
@@ -27,9 +28,13 @@ if ! command -v glow &> /dev/null; then
   echo "    (Your output will still work, but glow makes it prettier.)"
 fi
 
-# Copy the script
-chmod +x "$SCRIPT_NAME"
-sudo cp "$SCRIPT_NAME" "$INSTALL_DIR/$BIN_NAME"
+# Download the script from GitHub
+echo "[*] Fetching latest script from GitHub..."
+curl -sL "$SCRIPT_URL" -o "/tmp/$SCRIPT_NAME"
+
+# Copy to /usr/local/bin
+chmod +x "/tmp/$SCRIPT_NAME"
+sudo cp "/tmp/$SCRIPT_NAME" "$INSTALL_DIR/$BIN_NAME"
 
 echo "[+] Installed $TOOL_NAME to $INSTALL_DIR/$BIN_NAME"
 echo
